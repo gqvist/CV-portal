@@ -229,3 +229,251 @@ a {
   font-size: 22px;
   cursor: pointer;
 }
+
+.timeline {
+  position: relative;
+  margin: 28px auto 0;
+  width: min(760px, 92%);
+  padding: 10px 0 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  transform: translateX(-50%);
+  background: rgba(12, 12, 12, 0.18);
+  border-radius: 999px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 14px 22px;
+  display: flex;
+}
+
+.timeline-item.left {
+  left: 0;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+.timeline-item.right {
+  left: 50%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+
+.timeline-item.left::before {
+  right: -8px;
+}
+
+.timeline-item.right::before {
+  left: -8px;
+}
+
+.timeline-card {
+  width: min(340px, 100%);
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(12, 12, 12, 0.12);
+}
+
+.timeline-year {
+  display: inline-block;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(12, 12, 12, 0.1);
+  color: #0c0c0c;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+  color: #0c0c0c;
+}
+
+.timeline-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #0c0c0c;
+}
+
+/* For responsive design */
+@media (max-width: 820px) {
+  .timeline::before {
+    left: 18px;
+    transform: none;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100%;
+    left: 0;
+    padding-left: 52px;
+    padding-right: 10px;
+    justify-content: flex-start;
+  }
+
+  .timeline-item::before {
+    left: 10px;
+    right: auto;
+  }
+
+  .timeline-card {
+    width: 100%;
+  }
+}
+
+/* To make CV print in a nicer way*/
+@media print {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: Arial, Helvetica, sans-serif !important; /* Better font for print */
+  }
+
+  /* Remove thing that should not be printed*/
+  .sidebar,
+  .nav,
+  .profile {
+    display: none !important;
+  }
+
+  /* Fixes layout for printing */
+  .layout {
+    display: block !important;
+    background: #fff !important;
+    gap: 0 !important;
+  }
+
+  .main {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Top bar becomes a clean header */
+  .topbar {
+    background: #fff !important;
+    padding: 0 0 12mm 0 !important;
+    border-bottom: 2px solid #000 !important;
+    display: block !important;
+  }
+
+  .topbar-inner {
+    text-align: left !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12pt !important;
+    letter-spacing: 0 !important;
+  }
+
+  .topbar-inner h1 {
+    color: #000 !important;
+    font-size: 22pt !important;
+    margin: 0 0 4mm 0 !important;
+  }
+
+  .topbar-inner p {
+    color: #000 !important;
+    margin: 0 !important;
+    font-size: 12pt !important;
+  }
+
+  /* Make background print friendly */
+  .content {
+    background: #fff !important;
+    padding: 10mm 0 0 0 !important;
+    overflow: visible !important;
+  }
+
+  .content-inner {
+    width: 100% !important;
+    max-width: 180mm !important; /* A4 size (good practice)*/
+    margin: 0 auto !important;
+    text-align: left !important;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-style: normal !important;
+    font-size: 16pt !important;
+    margin: 0 0 6mm 0 !important;
+    color: #000 !important;
+  }
+
+  /* Makes timeline print better*/
+  .timeline {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove center line */
+  .timeline::before{
+    display: none !important;
+  }
+
+  /* Force single column items */
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100% !important;
+    left: 0 !important;
+    padding: 0 !important;
+    margin: 0 0 6mm 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-card {
+    width: 100% !important;
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 4mm 5mm !important;
+    page-break-inside: avoid !important; /* keep each event together */
+  }
+
+  .timeline-year {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 12pt !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 0 2mm 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .timeline-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12pt !important;
+    margin: 0 0 2mm 0 !important;
+  }
+
+  .timeline-text {
+    font-size: 11pt !important;
+    margin: 0 !important;
+    line-height: 1.35 !important;
+  }
+}
