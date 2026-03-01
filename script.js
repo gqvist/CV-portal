@@ -64,3 +64,30 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Easter egg number #1 Found!");
   }
 });
+
+// Easteregg-2: Triple click on profile picture to toggle Comic Sans mode
+document.addEventListener("DOMContentLoaded", function () {
+  const profileImage = document.getElementById("profile-img");
+
+  let clickCount = 0;
+  let clickTimer;
+
+  profileImage.addEventListener("click", function () {
+    clickCount++;
+
+    if (clickCount === 1) {
+      // Reset after 600ms if no more clicks
+      clickTimer = setTimeout(() => {
+        clickCount = 0;
+      }, 600);
+    }
+
+    if (clickCount === 3) {
+      clearTimeout(clickTimer);
+      clickCount = 0;
+
+      // Toggle Comic Sans mode
+      document.body.classList.toggle("comic-mode");
+    }
+  });
+});

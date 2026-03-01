@@ -313,6 +313,11 @@ a {
   color: #0c0c0c;
 }
 
+.comic-mode,
+.comic-mode * {
+  font-family:"Comic Sans MS", cursive, sans-serif !important;
+}
+
 /* For responsive design */
 @media (max-width: 820px) {
   .timeline::before {
